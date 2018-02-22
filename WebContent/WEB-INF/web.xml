@@ -54,14 +54,14 @@
   	<servlet-name>UserReportServlet</servlet-name>
 	<url-pattern>/UserReportServlet/*</url-pattern>
   </servlet-mapping>
-  <servlet>^M
-        <servlet-name>ReportServlet</servlet-name>^M
-        <servlet-class>mts.dsc.servlet.ReportServlet</servlet-class>^M
-  </servlet>^M
-  <servlet-mapping>^M
-        <servlet-name>ReportServlet</servlet-name>^M
-        <url-pattern>/ReportServlet/*</url-pattern>^M
-  </servlet-mapping>^M
+  <servlet>
+        <servlet-name>ReportServlet</servlet-name>
+        <servlet-class>mts.dsc.servlet.ReportServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+        <servlet-name>ReportServlet</servlet-name>
+        <url-pattern>/ReportServlet/*</url-pattern>
+  </servlet-mapping>
   <servlet>
     <description>AdminUsers</description>
     <display-name>AdminUsers</display-name>
@@ -113,25 +113,25 @@
     <servlet-name>AdminProjects</servlet-name>
     <url-pattern>/AdminProjects</url-pattern>
   </servlet-mapping>
-  <servlet>^M
-    <description></description>^M
-    <display-name>AdminDepartments</display-name>^M
-    <servlet-name>AdminDepartments</servlet-name>^M
-    <servlet-class>mts.dsc.servlet.systemadmin.AdminDepartments</servlet-class>^M
-  </servlet>^M
-  <servlet-mapping>^M
-    <servlet-name>AdminDepartments</servlet-name>^M
-    <url-pattern>/AdminDepartments</url-pattern>^M
-  </servlet-mapping>^M
-  <servlet>^M
-    <description></description>^M
-    <display-name>AdminExpense</display-name>^M
-    <servlet-name>AdminExpense</servlet-name>^M
-    <servlet-class>mts.dsc.servlet.systemadmin.AdminExpense</servlet-class>^M
-  </servlet>^M
-  <servlet-mapping>^M
-    <servlet-name>AdminExpense</servlet-name>^M
-    <url-pattern>/AdminExpense</url-pattern>^M
-  </servlet-mapping>^M
+  <servlet>
+    <description></description>
+    <display-name>AdminDepartments</display-name>
+    <servlet-name>AdminDepartments</servlet-name>
+    <servlet-class>mts.dsc.servlet.systemadmin.AdminDepartments</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminDepartments</servlet-name>
+    <url-pattern>/AdminDepartments</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>AdminExpense</display-name>
+    <servlet-name>AdminExpense</servlet-name>
+    <servlet-class>mts.dsc.servlet.systemadmin.AdminExpense</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AdminExpense</servlet-name>
+    <url-pattern>/AdminExpense</url-pattern>
+  </servlet-mapping>
 
 </web-app>
