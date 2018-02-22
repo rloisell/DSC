@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mts.dsc.orm.user_user.User_User" table="`User_User`" lazy="false">
+		<composite-id>
+			<key-many-to-one name="Useremp" column="`UserempId`" class="mts.dsc.orm.user.User">
+			</key-many-to-one>
+			<key-many-to-one name="UserempId2" column="`UserempId2`" class="mts.dsc.orm.user.User">
+			</key-many-to-one>
+			<key-property name="startDate" column="`startDate`" type="date"/>
+		</composite-id>
+		<property name="endDate" column="`endDate`" type="date" not-null="false" lazy="false"/>
+	</class>
+</hibernate-mapping>

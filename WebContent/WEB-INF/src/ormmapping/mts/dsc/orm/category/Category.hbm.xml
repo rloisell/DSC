@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mts.dsc.orm.category.Category" table="`Category`" lazy="false">
+		<id name="categoryID" column="`categoryID`" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="categoryName" column="`categoryName`" type="string" length="255" not-null="true" lazy="false"/>
+		<set name="Activity" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`CategorycategoryID`" not-null="true"/>
+			<one-to-many class="mts.dsc.orm.activity.Activity"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mts.dsc.orm.position.Position" table="`Position`" lazy="false">
+		<id name="positionID" column="`positionID`" type="integer">
+			<generator class="assigned">
+			</generator>
+		</id>
+		<property name="latCode" column="`latCode`" type="integer" length="11" not-null="true" lazy="false"/>
+		<property name="description" column="`description`" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="status" column="`status`" type="string" length="255" not-null="true" lazy="false"/>
+		<many-to-one name="Unionunion" cascade="lock" column="`UnionunionId`" class="mts.dsc.orm.union.Union" not-null="true" lazy="no-proxy">
+		</many-to-one>
+		<set name="User_Position" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`PositionpositionID`" not-null="true"/>
+			<one-to-many class="mts.dsc.orm.user_position.User_Position"/>
+		</set>
+	</class>
+</hibernate-mapping>

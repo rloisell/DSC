@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mts.dsc.orm.user_auth.User_Auth" table="`User_Auth`" lazy="false">
+		<id name="userName" column="`userName`" type="string">
+			<generator class="assigned">
+			</generator>
+		</id>
+		<many-to-one name="Useremp" column="`UserempId`" class="mts.dsc.orm.user.User" cascade="save-update,lock" unique="true" not-null="true" lazy="no-proxy">
+		</many-to-one>
+		<property name="password" column="`password`" type="string" length="255" not-null="true" lazy="false"/>
+	</class>
+</hibernate-mapping>

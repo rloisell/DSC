@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<link rel="stylesheet" type="text/css" media="all" href="../js/cal/calendar-win2k-1.css" title="win2k-cold-1" />
+<script type="text/javascript" src="../js/cal/calendar.js"></script>
+<script type="text/javascript" src="../js/cal/lang/calendar-en.js"></script>
+<script type="text/javascript" src="../js/cal/calendar-setup.js"></script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+
+<div id="calendar-container">
+
+</div>
+<p>
+<a href="javascript:createCalendar()">click for calendar</a>
+<input name="show" type="button" id="show" value="Show Calendar" />
+</p>
+
+
+
+<script type="text/javascript">
+var calendarDisplayed=false;
+var cal;
+var todaysdate=new Date();
+todaysdate.setFullYear(2009, 1, 14);
+function dateChanged(calendar)
+{
+    // Beware that this function is called even if the end-user only
+    // changed the month/year.  In order to determine if a date was
+    // clicked you can use the dateClicked property of the calendar:
+    if (calendar.dateClicked) {
+      // OK, a date was clicked, redirect to /yyyy/mm/dd/index.php
+      var y = calendar.date.getFullYear();
+      var m = calendar.date.getMonth();     // integer, 0..11
+      var d = calendar.date.getDate();      // integer, 1..31
+      //TO DO
+	  //what to do with the calendar date
+	  
+	  // redirect...
+      window.location = "http://hostname/dsc/pagename?y="+y+"m="+m+"d="+d;
+    }
+}
+function createCalendar()
+{
+	if(calendarDisplayed==false) {
+		cal=Calendar.setup(
+		{
+			flat         : "calendar-container", // ID of the parent element
+			flatCallback : dateChanged,          // our callback function
+			onClose		 : closeCalendar,
+			date		 : new Date(2009, 1, 14)
+		}
+		);
+		calendarDisplayed=true;
+	}
+	//else {
+		//cal.hide();
+		//calendarDisplayed=false;
+	//}
+}
+function closeCalendar(calendar)
+{
+	calendar.destroy();
+}
+</script>
+</body>
+</html>

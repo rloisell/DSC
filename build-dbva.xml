@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<project name="DSC" default="instrument">
+	<description>
+		DSC
+	</description>
+
+	<property name="src.dir" location="src" />
+	<property name="lib.dir" location="lib" />
+	<property name="classes.dir" location="classes" />
+	<property name="javac.debug" value="on" />
+
+	<target name="compile" description="Compile DSC">
+		<mkdir dir="${classes.dir}" />
+		<javac srcdir="${src.dir}" destdir="${classes.dir}" debug="${javac.debug}">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+			</classpath>
+		</javac>
+		<copy todir="${classes.dir}">
+			<fileset dir="${src.dir}">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+	</target>
+
+	<target name="clean" description="Clean DSC">
+		<delete dir="${classes.dir}" />
+	</target>
+
+	<target name="createSchema" description="Run create data schema sample">
+		<java classname="ormsamples.CreateDSCDatabaseSchema" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="createdata" description="Run create test data sample">
+		<java classname="ormsamples.CreateDSCData" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="retrievedata" description="Run retrieve data sample">
+		<java classname="ormsamples.RetrieveDSCData" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="deletedata" description="Run delete data sample">
+		<java classname="ormsamples.DeleteDSCData" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="dropschema" description="Run drop schema sample">
+		<java classname="ormsamples.DropDSCDatabaseSchema" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="listdata" description="Run list data sample">
+		<java classname="ormsamples.ListDSCData" fork="true">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</java>
+	</target>
+
+	<target name="instrument" depends="compile">
+		<taskdef name="instrument" classname="org.hibernate.tool.instrument.cglib.InstrumentTask">
+			<classpath>
+				<fileset dir="${lib.dir}" includes="*.jar"/>
+				<pathelement location="${classes.dir}"/>
+			</classpath>
+		</taskdef>
+		<instrument verbose="true">
+			<fileset dir="${classes.dir}">
+				<include name="mts/dsc/orm/activity/Activity.class"/>
+				<include name="mts/dsc/orm/category/Category.class"/>
+				<include name="mts/dsc/orm/budget/Budget.class"/>
+				<include name="mts/dsc/orm/user/User.class"/>
+				<include name="mts/dsc/orm/union/Union.class"/>
+				<include name="mts/dsc/orm/position/Position.class"/>
+				<include name="mts/dsc/orm/calendar/Calendar.class"/>
+				<include name="mts/dsc/orm/calendar_category/Calendar_Category.class"/>
+				<include name="mts/dsc/orm/user_auth/User_Auth.class"/>
+				<include name="mts/dsc/orm/expense_activity/Expense_Activity.class"/>
+				<include name="mts/dsc/orm/director_code/Director_Code.class"/>
+				<include name="mts/dsc/orm/reason_code/Reason_Code.class"/>
+				<include name="mts/dsc/orm/network_numbers/Network_Numbers.class"/>
+				<include name="mts/dsc/orm/project_activity/Project_Activity.class"/>
+				<include name="mts/dsc/orm/activity_codes/Activity_Codes.class"/>
+				<include name="mts/dsc/orm/project/Project.class"/>
+				<include name="mts/dsc/orm/department/Department.class"/>
+				<include name="mts/dsc/orm/cpc_code/CPC_Code.class"/>
+				<include name="mts/dsc/orm/user_position/User_Position.class"/>
+				<include name="mts/dsc/orm/user_user/User_User.class"/>
+				<include name="mts/dsc/orm/department_user/Department_User.class"/>
+			</fileset>
+		</instrument>
+	</target>
+</project>

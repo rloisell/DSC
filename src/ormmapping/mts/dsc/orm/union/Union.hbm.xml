@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mts.dsc.orm.union.Union" table="`Union`" lazy="false">
+		<id name="unionId" column="`unionId`" type="integer">
+			<generator class="assigned">
+			</generator>
+		</id>
+		<property name="unionName" column="`unionName`" type="string" length="255" not-null="false" lazy="false"/>
+		<set name="Position" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`UnionunionId`" not-null="true"/>
+			<one-to-many class="mts.dsc.orm.position.Position"/>
+		</set>
+	</class>
+</hibernate-mapping>

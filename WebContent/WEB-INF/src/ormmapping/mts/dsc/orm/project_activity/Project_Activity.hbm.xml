@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mts.dsc.orm.project_activity.Project_Activity" table="`Project_Activity`" lazy="false">
+		<id column="`ActivityactivityID`" type="integer">
+			<generator class="foreign">
+				<param name="property">Activityactivity</param>
+			</generator>
+		</id>
+		<one-to-one name="Activityactivity" class="mts.dsc.orm.activity.Activity" cascade="all" constrained="true"/>
+		<many-to-one name="ProjectprojectNo" cascade="lock" column="`ProjectprojectNo`" class="mts.dsc.orm.project.Project" not-null="true" lazy="no-proxy">
+		</many-to-one>
+		<many-to-one name="Network_NumbersnetworkNumber" cascade="lock" column="`Network_NumbersnetworkNumber`" class="mts.dsc.orm.network_numbers.Network_Numbers" not-null="true" lazy="no-proxy">
+		</many-to-one>
+		<many-to-one name="Activity_CodesactivityCode" cascade="lock" column="`Activity_CodesactivityCode`" class="mts.dsc.orm.activity_codes.Activity_Codes" not-null="true" lazy="no-proxy">
+		</many-to-one>
+	</class>
+</hibernate-mapping>
