@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mts.dsc.orm.department.Department" table="`Department`" lazy="false">
+		<id name="deptID" column="`deptID`" type="integer">
+			<generator class="assigned">
+			</generator>
+		</id>
+		<many-to-one name="Useremp" column="`UserempId`" class="mts.dsc.orm.user.User" cascade="save-update,lock" unique="true" not-null="true" lazy="no-proxy">
+		</many-to-one>
+		<property name="deptName" column="`deptName`" type="string" length="255" not-null="true" lazy="false"/>
+		<set name="UsedBy" table="`Department_Category`" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`CategorycategoryID`" not-null="true"/>
+			<many-to-many column="`DepartmentdeptID`" class="mts.dsc.orm.department.Department">
+			</many-to-many>
+		</set>
+		<set name="HasDC" table="`Department_Category`" lazy="true" cascade="save-update,lock">
+			<key column="`DepartmentdeptID`" not-null="true"/>
+			<many-to-many column="`CategorycategoryID`" class="mts.dsc.orm.department.Department">
+			</many-to-many>
+		</set>
+		<set name="Department_User" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`DepartmentdeptID`" not-null="true"/>
+			<one-to-many class="mts.dsc.orm.department_user.Department_User"/>
+		</set>
+	</class>
+</hibernate-mapping>

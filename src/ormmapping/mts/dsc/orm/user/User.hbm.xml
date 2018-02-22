@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mts.dsc.orm.user.User" table="`User`" lazy="false">
+		<id name="empId" column="`empId`" type="integer">
+			<generator class="assigned">
+			</generator>
+		</id>
+		<property name="firstName" column="`firstName`" type="string" length="15" not-null="true" lazy="false"/>
+		<property name="lastName" column="`lastName`" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="email" column="`email`" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="ncsDate" column="`ncsDate`" type="date" not-null="true" lazy="false"/>
+		<property name="roleID" column="`roleID`" type="integer" length="2" not-null="true" lazy="false"/>
+		<one-to-one name="Department" class="mts.dsc.orm.department.Department" cascade="save-update,lock" property-ref="Useremp" lazy="no-proxy"/>
+		<set name="Activity" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`UserempId`" not-null="true"/>
+			<one-to-many class="mts.dsc.orm.activity.Activity"/>
+		</set>
+		<one-to-one name="User_Auth" class="mts.dsc.orm.user_auth.User_Auth" cascade="save-update,lock" property-ref="Useremp" lazy="no-proxy"/>
+		<set name="Department_User" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`UserempId`" not-null="true"/>
+			<one-to-many class="mts.dsc.orm.department_user.Department_User"/>
+		</set>
+		<set name="User_Position" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`UserempId`" not-null="true"/>
+			<one-to-many class="mts.dsc.orm.user_position.User_Position"/>
+		</set>
+		<set name="User_User" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`UserempId`" not-null="true"/>
+			<one-to-many class="mts.dsc.orm.user_user.User_User"/>
+		</set>
+		<set name="User_User1" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`UserempId2`" not-null="true"/>
+			<one-to-many class="mts.dsc.orm.user_user.User_User"/>
+		</set>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mts.dsc.orm.calendar_category.Calendar_Category" table="`Calendar_Category`" lazy="false">
+		<id name="calendarCategory" column="`calendarCategory`" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<property name="calendarCatName" column="`calendarCatName`" type="string" length="255" not-null="true" lazy="false"/>
+		<property name="description" column="`description`" type="string" length="255" not-null="false" lazy="false"/>
+		<set name="Calandar" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`Calendar_CategorycalendarCategory`" not-null="true"/>
+			<one-to-many class="mts.dsc.orm.calendar.Calendar"/>
+		</set>
+	</class>
+</hibernate-mapping>

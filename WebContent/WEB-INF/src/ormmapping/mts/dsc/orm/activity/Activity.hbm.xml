@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mts.dsc.orm.activity.Activity" table="`Activity`" lazy="false">
+		<id name="activityID" column="`activityID`" type="integer" unsaved-value="0">
+			<generator class="increment">
+			</generator>
+		</id>
+		<many-to-one name="Calandardate" cascade="lock" column="`Calendardate`" class="mts.dsc.orm.calendar.Calendar" not-null="true" lazy="no-proxy">
+		</many-to-one>
+		<property name="description" column="`description`" type="string" length="255" not-null="false" lazy="false"/>
+		<property name="startTime" column="`startTime`" type="timestamp" not-null="false" lazy="false"/>
+		<property name="endTime" column="`endTime`" type="timestamp" not-null="false" lazy="false"/>
+		<property name="plannedDuration" column="`plannedDuration`" type="time" not-null="false" lazy="false"/>
+		<property name="actualDuration" column="`actualDuration`" type="integer" length="11" not-null="true" lazy="false"/>
+		<many-to-one name="Useremp" cascade="lock" column="`UserempId`" class="mts.dsc.orm.user.User" not-null="true" lazy="no-proxy">
+		</many-to-one>
+		<many-to-one name="Budgetbudget" cascade="lock" column="`BudgetBudgetId`" class="mts.dsc.orm.budget.Budget" not-null="true" lazy="no-proxy">
+		</many-to-one>
+		<many-to-one name="Categorycategory" cascade="lock" column="`CategorycategoryID`" class="mts.dsc.orm.category.Category" not-null="true" lazy="no-proxy">
+		</many-to-one>
+		<one-to-one name="Project_Activity" class="mts.dsc.orm.project_activity.Project_Activity" cascade="save-update,lock" lazy="no-proxy"/>
+		<one-to-one name="Expense_Activity" class="mts.dsc.orm.expense_activity.Expense_Activity" cascade="save-update,lock" lazy="no-proxy"/>
+	</class>
+</hibernate-mapping>

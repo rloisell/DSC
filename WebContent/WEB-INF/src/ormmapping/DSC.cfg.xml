@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-configuration PUBLIC
+        "-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+ "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+   	<!-- properties -->
+		<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
+		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="connection.url">jdbc:mysql://127.0.0.1/dscdev</property>
+		<property name="connection.username">dscdev</property>
+		<property name="connection.password">REDACTED_DO_NOT_COMMIT</property>
+		<property name="show_sql">false</property>
+		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
+		<!-- mapping files -->
+		<mapping resource="ormmapping/mts/dsc/orm/activity/Activity.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/category/Category.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/budget/Budget.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/user/User.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/union/Union.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/position/Position.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/calendar/Calendar.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/calendar_category/Calendar_Category.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/user_auth/User_Auth.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/expense_activity/Expense_Activity.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/director_code/Director_Code.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/reason_code/Reason_Code.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/network_numbers/Network_Numbers.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/project_activity/Project_Activity.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/activity_codes/Activity_Codes.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/project/Project.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/department/Department.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/cpc_code/CPC_Code.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/user_position/User_Position.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/user_user/User_User.hbm.xml" />
+		<mapping resource="ormmapping/mts/dsc/orm/department_user/Department_User.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>

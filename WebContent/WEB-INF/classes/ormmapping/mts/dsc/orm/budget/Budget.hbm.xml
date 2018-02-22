@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!--
+Licensee: MTS Allstream Inc.
+License Type: Purchased
+-->
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="mts.dsc.orm.budget.Budget" table="`Budget`" lazy="false">
+		<meta attribute="class-description">
+			Currently  there are 2 budget types, Expense = 0 and Capital = 1. Another table was created to allow this category to get more granular with time. The selection of a row in this table allows the application to determine if there is a corresponding Project_Activity or Expense_Activity record.
+		</meta>
+		<id name="budgetId" column="`BudgetId`" type="integer" unsaved-value="0">
+			<generator class="native">
+			</generator>
+		</id>
+		<property name="budgetDescription" column="`budgetDescription`" type="string" length="10" not-null="true" lazy="false"/>
+		<set name="Activity" lazy="true" cascade="save-update,lock" inverse="true">
+			<key column="`BudgetBudgetId`" not-null="true"/>
+			<one-to-many class="mts.dsc.orm.activity.Activity"/>
+		</set>
+	</class>
+</hibernate-mapping>
