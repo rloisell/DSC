@@ -89,7 +89,7 @@ public class LoginServlet extends HttpServlet {
 					Employee emp=new Employee(uA.getUseremp());
 					if (session.getAttribute("employee") != null) session.removeAttribute("employee");
 					session.setAttribute("employee", emp);
-					url="http://appsrv.azonicnet.com:8080/DSC/ActivityServlet";
+					url="http://localhost:8081/DSC/ActivityServlet";
 					session.removeAttribute("visited");
 				}
 			}
