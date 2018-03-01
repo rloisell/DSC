@@ -11,7 +11,7 @@ License Type: Purchased
    	<!-- properties -->
 		<property name="dialect">org.hibernate.dialect.MySQLInnoDBDialect</property>
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-		<property name="connection.url">jdbc:mysql://206.45.65.82/dscdev</property>
+		<property name="connection.url">jdbc:mysql://localhost/dscdev</property>
 		<property name="connection.username">dscdev</property>
 		<property name="connection.password">REDACTED_DO_NOT_COMMIT</property>
 		<property name="show_sql">false</property>
