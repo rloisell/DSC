@@ -51,6 +51,7 @@ public class SecondTest {
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : password, userName, Useremp
 			xUser_Auth.setUseremp(testUser1);
 			xUser_Auth.setUserName("kduma");
+			// test password redacted
 			xUser_Auth.setPassword("REDACTED_TEST_PASSWORD");
 			System.out.println("\n===> SETTING USER AUTH \n\n"+ xUser_Auth.toString());
 			mts.dsc.orm.user_auth.User_AuthDAO.save(xUser_Auth);
@@ -63,6 +64,7 @@ public class SecondTest {
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : password, userName, Useremp
 			aUser_Auth.setUseremp(testUser2);
 			aUser_Auth.setUserName("mammeter");
+			// test password redacted
 			aUser_Auth.setPassword("REDACTED_TEST_PASSWORD");
 			System.out.println("\n===> SETTING USER AUTH \n\n"+ aUser_Auth.toString());
 			mts.dsc.orm.user_auth.User_AuthDAO.save(aUser_Auth);
@@ -75,7 +77,8 @@ public class SecondTest {
 			mts.dsc.orm.user_auth.User_Auth aUser_Auth2 = mts.dsc.orm.user_auth.User_AuthDAO.loadUser_AuthByQuery("User_Auth.userName='rloisel1'", null);
 			// Update the properties of the persistent object
 			System.out.println("+++> CHANGING USER AUTH - ORIGINAL\n\n"+ aUser_Auth2.toString());
-			aUser_Auth2.setPassword("s0l0cr00");
+			// test password redacted
+			aUser_Auth2.setPassword("REDACTED_TEST_PASSWORD");
 			System.out.println("===> CHANGING USER AUTH - UPDATED\n\n"+ aUser_Auth2.toString());			
 			mts.dsc.orm.user_auth.User_AuthDAO.save(aUser_Auth2);
 			

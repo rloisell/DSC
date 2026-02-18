@@ -47,7 +47,7 @@ public class FirstTest {
 			// TODO Initialize the properties of the persistent object here, the following properties must be initialized before saving : password, userName, Useremp
 			mTSDSCORMUser_AuthUser_Auth.setUseremp(mTSDSCORMUserUser);
 			mTSDSCORMUser_AuthUser_Auth.setUserName("rloisel1");
-			mTSDSCORMUser_AuthUser_Auth.setPassword("a11ezpr&");
+			mTSDSCORMUser_AuthUser_Auth.setPassword("xxxxxxxx");
 			mts.dsc.orm.user_auth.User_AuthDAO.save(mTSDSCORMUser_AuthUser_Auth);
 
 			mts.dsc.orm.project.Project mTSDSCORMProjectProject = mts.dsc.orm.project.ProjectDAO.createProject();

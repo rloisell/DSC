@@ -1,0 +1,10 @@
+# Ignore SSL test certs and private keys
+**/src/testsuite/ssl-test-certs/*
+*.pem
+
+# Local env files
+.env
+.env.local
+
+# Build outputs
+/build/

@@ -13,6 +13,7 @@ License Type: Purchased
 		<property name="connection.driver_class">com.mysql.jdbc.Driver</property>
 		<property name="connection.url">jdbc:mysql://localhost/dscdev</property>
 		<property name="connection.username">dscdev</property>
+		<!-- Password redacted from repository. Set runtime value via environment variable DB_PASSWORD or an external config. -->
 		<property name="connection.password">REDACTED_DO_NOT_COMMIT</property>
 		<property name="show_sql">false</property>
 		<property name="query.substitutions">true 1, false 0, yes 'Y', no 'N'</property>
