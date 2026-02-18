@@ -2,3 +2,18 @@ pre-scrub-backup branch created before history rewrite.
 Local scrub performed on 2026-02-17.
 Last commit message (redaction): "chore(secrets): redact committed plaintext passwords and remove private keys"
 Files committed: see AI/CHANGES.csv
+
+Push attempts and outcome:
+- 2026-02-17: deferred pending credential rotation.
+- 2026-02-18: assistant attempted to run force-push but the execution environment's terminal closed; user ran the push locally and it succeeded.
+
+Remote state:
+- Rewritten history force-pushed to `origin/master` on 2026-02-18.
+- `pre-scrub-backup` branch created and pushed to remote.
+
+Collaborators notified: yes (user confirmed).
+Credentials rotated: yes (user confirmed).
+
+Next recommended actions:
+- Revoke any old credentials not already rotated.
+- Verify CI/CD and deployed environments use rotated credentials.

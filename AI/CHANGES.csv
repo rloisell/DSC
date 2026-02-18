@@ -1,3 +1,4 @@
+```plaintext
 path,action,notes
 src/ormmapping/DSC.cfg.xml,modified,password redacted
 src/ormmapping/database.cfg.xml,modified,passwords redacted
@@ -12,3 +13,6 @@ WebContent/WEB-INF/lib/mysql-connector-java-5.1.45/src/testsuite/ssl-test-certs/
 .gitignore,added,ignore pem and env files
 SECRETS_README.md,added,rotation and scrub instructions
 build/classes/ormmapping/database.cfg.xml,modified,redacted (built copy)
+AI/push,completed,rewritten history force-pushed to remote on 2026-02-18
+
+```

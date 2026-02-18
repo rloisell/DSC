@@ -1,3 +1,4 @@
+```bash
 #!/bin/bash
 # Commands used to scrub repository (do NOT run unless you understand history rewrite implications)
 
@@ -22,3 +23,20 @@
 # rm -rf .git/refs/original/
 # git reflog expire --expire=now --all
 # git gc --prune=now --aggressive
+
+## Push commands (run locally AFTER rotating credentials)
+
+```bash
+# verify remotes and working tree are clean
+git remote -v
+git status --porcelain
+
+# fetch updates then force-push all branches and tags
+git fetch --all --prune
+git push --force --all
+git push --force --tags
+```
+
+# Note: The assistant attempted to run these commands but the execution environment's terminal closed and the push could not be completed by the agent.
+
+```
