@@ -1,0 +1,4 @@
+pre-scrub-backup branch created before history rewrite.
+Local scrub performed on 2026-02-17.
+Last commit message (redaction): "chore(secrets): redact committed plaintext passwords and remove private keys"
+Files committed: see AI/CHANGES.csv

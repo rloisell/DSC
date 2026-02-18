@@ -1,0 +1,14 @@
+path,action,notes
+src/ormmapping/DSC.cfg.xml,modified,password redacted
+src/ormmapping/database.cfg.xml,modified,passwords redacted
+build/classes/ormmapping/database.cfg.xml,modified,passwords redacted
+src/mts/dsc/test/SecondTest.java,modified,test passwords redacted
+lib/mysql-connector-java-5.1.7/src/testsuite/ssl-test-certs/server-key.pem,deleted,private key removed
+lib/mysql-connector-java-5.1.7/src/testsuite/ssl-test-certs/ca-key.pem,deleted,private key removed
+WebContent/WEB-INF/lib/mysql-connector-java-5.1.45/src/testsuite/ssl-test-certs/client-key.pem,deleted,private key removed
+WebContent/WEB-INF/lib/mysql-connector-java-5.1.45/src/testsuite/ssl-test-certs/mykey.pem,deleted,private key removed
+WebContent/WEB-INF/lib/mysql-connector-java-5.1.45/src/testsuite/ssl-test-certs/server-key.pem,deleted,private key removed
+WebContent/WEB-INF/lib/mysql-connector-java-5.1.45/src/testsuite/ssl-test-certs/ca-key.pem,deleted,private key removed
+.gitignore,added,ignore pem and env files
+SECRETS_README.md,added,rotation and scrub instructions
+build/classes/ormmapping/database.cfg.xml,modified,redacted (built copy)
