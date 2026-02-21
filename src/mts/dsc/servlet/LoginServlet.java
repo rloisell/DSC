@@ -11,6 +11,16 @@ import javax.servlet.http.HttpSession;
 
 import org.orm.PersistentException;
 
+/*
+ * LoginServlet.java
+ * Ryan Loiselle — Developer / Architect
+ * GitHub Copilot — AI pair programmer / code generation
+ * February 2026
+ *
+ * AI-assisted: rewrote doGet with credential-first authentication logic to fix broken
+ * session-gate; fixed hardcoded redirect URL; reviewed and directed by Ryan Loiselle.
+ */
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -69,7 +79,8 @@ public class LoginServlet extends HttpServlet {
 						session.removeAttribute("employee");
 					}
 					session.setAttribute("employee", emp);
-					url = "http://localhost:8080/DSC/ActivityServlet";
+					// Use context-relative redirect so this works on any host/port
+					url = request.getContextPath() + "/ActivityServlet";
 				}
 			}
 		} else {
@@ -94,4 +105,4 @@ public class LoginServlet extends HttpServlet {
 		doGet(request, response);
 	}
 
-}
+} // end LoginServlet

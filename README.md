@@ -86,5 +86,7 @@ lib/                  Third-party JARs
 | Branch | Purpose |
 |--------|---------|
 | `master` | Stable baseline — no broken builds |
-| `chore/local-dev-env` | Local environment setup and foundational fixes |
+| `feat/<description>` | New features |
+| `fix/<description>` | Bug fixes |
+| `chore/<description>` | Environment, tooling, and non-functional changes |
 
