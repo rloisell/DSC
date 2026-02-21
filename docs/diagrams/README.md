@@ -478,21 +478,21 @@ Logical data model — cardinalities and foreign-key relationships across all 19
 erDiagram
     USER {
         int empId PK
-        string firstName
-        string lastName
-        string email
+        varchar firstName
+        varchar lastName
+        varchar email
         date ncsDate
         int roleID
         int deptID FK
     }
     USER_AUTH {
-        string userName PK
-        string password
+        varchar userName PK
+        varchar password
         int empId FK
     }
     DEPARTMENT {
         int deptID PK
-        string deptName
+        varchar deptName
         int managerEmpId FK
     }
     DEPARTMENT_USER {
@@ -510,18 +510,18 @@ erDiagram
     POSITION {
         int positionID PK
         int latCode
-        string description
-        string status
+        varchar description
+        varchar status
         int unionId FK
     }
     UNION {
         int unionId PK
-        string description
+        varchar description
     }
     ACTIVITY {
         int activityID PK
         date calendarDate FK
-        string description
+        varchar description
         timestamp startTime
         timestamp endTime
         time plannedDuration
@@ -536,51 +536,51 @@ erDiagram
     }
     CALENDAR_CATEGORY {
         int calendarCategoryId PK
-        string description
+        varchar description
     }
     BUDGET {
         int budgetId PK
-        string budgetDescription
+        varchar budgetDescription
     }
     CATEGORY {
         int categoryID PK
-        string categoryName
+        varchar categoryName
     }
     PROJECT_ACTIVITY {
-        int activityID PK_FK
-        string projectNo FK
+        int activityID PK
+        varchar projectNo FK
         int networkNumber FK
         int activityCode FK
     }
     PROJECT {
-        string projectNo PK
-        string description
+        varchar projectNo PK
+        varchar description
     }
     NETWORK_NUMBERS {
         int networkNumber PK
-        string description
+        varchar description
     }
     ACTIVITY_CODES {
         int activityCode PK
-        string description
+        varchar description
     }
     EXPENSE_ACTIVITY {
-        int activityID PK_FK
+        int activityID PK
         int directorCode FK
         int reasonCode FK
         int cpcCode FK
     }
     DIRECTOR_CODE {
         int directorCode PK
-        string description
+        varchar description
     }
     REASON_CODE {
         int reasonCode PK
-        string description
+        varchar description
     }
     CPC_CODE {
         int cpcCode PK
-        string description
+        varchar description
     }
 
     USER ||--|| USER_AUTH : "authenticated by"
