@@ -162,7 +162,8 @@ across this project and the template repo.
 
 ### Commits
 - `ef49e3d` — fix: address PR review issues and coding standards gaps
-- Pending: commit for AI mandatory standard + worklog update
+- `a1f9454` — chore: make AI directory mandatory; update AI tracking files
+- `d7bb9fe` — chore: local dev environment setup and foundational fixes (#1) [merge commit on master]
 
 ### Outcomes / Notes
 - All four AI review issues resolved and deployed

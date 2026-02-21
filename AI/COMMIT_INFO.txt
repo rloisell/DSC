@@ -50,6 +50,15 @@ Append one entry per major operation. Do not remove previous entries.
   Message: chore: make AI directory mandatory across project and template
   Push:    pending
 
+─── PR #1 Merge — 2026-02-21 ────────────────────────────────────────────────
+
+  Date:    2026-02-21
+  Branch:  master (squash merge from chore/local-dev-env)
+  Hash:    d7bb9fe
+  Message: chore: local dev environment setup and foundational fixes (#1)
+  Push:    succeeded (squash merge via gh pr merge)
+  Notes:   Branch chore/local-dev-env deleted after merge (local and remote).
+
 Last commit message (redaction): "chore(secrets): redact committed plaintext passwords and remove private keys"
 Files committed: see AI/CHANGES.csv
 
