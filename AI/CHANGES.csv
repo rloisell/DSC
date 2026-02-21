@@ -1,4 +1,3 @@
-```plaintext
 path,action,notes
 src/ormmapping/DSC.cfg.xml,modified,password redacted
 src/ormmapping/database.cfg.xml,modified,passwords redacted
@@ -12,7 +11,24 @@ WebContent/WEB-INF/lib/mysql-connector-java-5.1.45/src/testsuite/ssl-test-certs/
 WebContent/WEB-INF/lib/mysql-connector-java-5.1.45/src/testsuite/ssl-test-certs/ca-key.pem,deleted,private key removed
 .gitignore,added,ignore pem and env files
 SECRETS_README.md,added,rotation and scrub instructions
-build/classes/ormmapping/database.cfg.xml,modified,redacted (built copy)
-AI/push,completed,rewritten history force-pushed to remote on 2026-02-18
+src/ormmapping/DSC.cfg.xml,modified,JDBC URL updated to port 4306 with useSSL=false
+src/mts/dsc/servlet/LoginServlet.java,modified,credential-first auth rewrite
+src/mts/dsc/utilities/EnvironmentConfigListener.java,created,DB env var injection on context init
+WebContent/WEB-INF/lib/mysql-connector-java-5.1.45-bin.jar,added,driver override for MySQL 8
+WebContent/WEB-INF/src/mts/dsc/servlet/LoginServlet.java,modified,mirror of src changes
+WebContent/WEB-INF/src/mts/dsc/utilities/EnvironmentConfigListener.java,created,mirror of src
+WebContent/WEB-INF/classes/mts/dsc/servlet/LoginServlet.class,compiled,recompiled after fix
+WebContent/WEB-INF/classes/mts/dsc/utilities/EnvironmentConfigListener.class,compiled,recompiled after fix
+docs/local-development/README.md,modified,complete rewrite — local dev guide
+docs/development-history.md,modified,session 2 added
+docs/diagrams/README.md,created,3 Mermaid diagrams: arch / login / deployment
+README.md,modified,rewritten with professional overview
+src/mts/dsc/utilities/EnvironmentConfigListener.java,modified,port fix + coding standards header/comments
+src/mts/dsc/servlet/LoginServlet.java,modified,relative URL + file header + end marker
+CODING_STANDARDS.md,modified,AI/ directory made mandatory in section 3 and section 5
+.github/copilot-instructions.md,modified,AI tracking added to ALWAYS list
+AI/WORKLOG.md,modified,sessions 2 3 4 appended
+AI/CHANGES.csv,modified,this file — sessions 2 3 4 rows appended
+AI/COMMANDS.sh,modified,sessions 2 3 4 commands appended
+AI/COMMIT_INFO.txt,modified,sessions 2 3 4 commits appended
 
-```
