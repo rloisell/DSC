@@ -142,5 +142,5 @@ Status against the required full UML suite (see `CODING_STANDARDS.md` §7).
 | 10 | Local deployment topology | Deployment | Infrastructure | ✅ Done (above) |
 
 Pending diagrams should be added incrementally as features are developed.
-URGENT: ERD and class diagram are the highest priority — they document the
+The ERD and class diagram are the highest priority — they document the
 existing domain model before the modernisation effort begins.
