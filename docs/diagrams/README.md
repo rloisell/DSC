@@ -119,3 +119,28 @@ graph LR
     WebApp -->|reads at startup| DSCCfg
     WebApp -->|JDBC :4306| MySQL8
 ```
+
+---
+
+## Diagram Inventory
+
+Status against the required full UML suite (see `CODING_STANDARDS.md` §7).
+
+| # | Diagram | UML Type | Perspective | Status |
+|---|---------|----------|-------------|--------|
+| 1 | System architecture | Component | Structural | ✅ Done (above) |
+| 2 | Domain class model | Class | Structural | ⏳ Pending |
+| 3 | Package / module organisation | Package | Structural | ⏳ Pending |
+| 4 | Use case overview | Use Case | Behavioural | ⏳ Pending |
+| 5 | Login sequence | Sequence | Behavioural | ✅ Done (above) |
+| 5b | Time entry / activity sequence | Sequence | Behavioural | ⏳ Pending |
+| 5c | Admin CRUD sequence | Sequence | Behavioural | ⏳ Pending |
+| 6 | Authentication workflow | Activity | Behavioural | ⏳ Pending |
+| 7 | Session lifecycle | State | Behavioural | ⏳ Pending |
+| 8 | Entity-Relationship Diagram (ERD) | ERD | Data | ⏳ Pending |
+| 9 | Physical schema (24 tables) | Schema | Data | ⏳ Pending |
+| 10 | Local deployment topology | Deployment | Infrastructure | ✅ Done (above) |
+
+Pending diagrams should be added incrementally as features are developed.
+URGENT: ERD and class diagram are the highest priority — they document the
+existing domain model before the modernisation effort begins.
