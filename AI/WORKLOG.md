@@ -168,3 +168,39 @@ across this project and the template repo.
 ### Outcomes / Notes
 - All four AI review issues resolved and deployed
 - AI directory now mandatory in both repos per coding standards
+
+---
+
+## Session 5 — 2025-07-14
+
+**Objective**: Complete all pending UML diagrams in `docs/diagrams/README.md`; create
+`AI/nextSteps.md` with prioritised modernisation backlog.
+
+### Actions taken
+- Read 15 Java source files to assemble the complete domain model (all ORM entities,
+  servlet list, package inventory).
+- Appended 9 new diagram sections to `docs/diagrams/README.md` (diagrams 4–12):
+  domain class model, package organisation, use case overview, activity recording
+  sequence, admin CRUD sequence, authentication workflow, session lifecycle, ERD,
+  physical schema.
+- Updated Diagram Inventory table — all 12 entries now marked ✅ Done.
+- Created `AI/nextSteps.md` with 33 numbered tasks across 4 phases:
+  environment modernisation (T01–T08), security (T09–T17), CI/CD to OpenShift
+  Emerald (T18–T25), feature enhancements (T26–T33).
+- Updated `AI/WORKLOG.md`, `AI/CHANGES.csv`, `AI/COMMANDS.sh`, `AI/COMMIT_INFO.txt`.
+- Committed and pushed.
+
+### Files created or modified
+- `docs/diagrams/README.md` — diagrams 4–12 added; inventory updated (all ✅)
+- `AI/nextSteps.md` — created; 33-task backlog across 4 phases
+- `AI/WORKLOG.md` — Session 5 entry added
+- `AI/CHANGES.csv` — Session 5 rows added
+- `AI/COMMANDS.sh` — Session 5 commands added
+- `AI/COMMIT_INFO.txt` — Session 5 commit added
+
+### Commits
+- `TBD` — docs: complete UML diagram suite and add next steps backlog
+
+### Outcomes / Notes
+- Full 12-diagram UML suite complete; codebase fully documented before modernisation
+- 33-task backlog ready; agent can pick up any task by number in a future session

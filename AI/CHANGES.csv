@@ -32,3 +32,9 @@ AI/CHANGES.csv,modified,this file — sessions 2 3 4 rows appended
 AI/COMMANDS.sh,modified,sessions 2 3 4 commands appended
 AI/COMMIT_INFO.txt,modified,sessions 2 3 4 commits appended
 
+docs/diagrams/README.md,modified,diagrams 4-12 added (class model / package / use case / activity seq / admin seq / auth workflow / session state / ERD / physical schema); inventory updated all Done
+AI/nextSteps.md,created,33-task backlog across 4 phases: modernisation T01-T08 / security T09-T17 / CI-CD T18-T25 / features T26-T33
+AI/WORKLOG.md,modified,Session 5 entry appended
+AI/CHANGES.csv,modified,Session 5 rows appended
+AI/COMMANDS.sh,modified,Session 5 commands appended
+AI/COMMIT_INFO.txt,modified,Session 5 commit appended
