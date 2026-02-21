@@ -1,5 +1,55 @@
-pre-scrub-backup branch created before history rewrite.
-Local scrub performed on 2026-02-17.
+AI Commit Log
+==============
+Record of significant commits and pushes driven by the AI.
+Append one entry per major operation. Do not remove previous entries.
+
+─── Session 1 — 2026-02-17/18 ───────────────────────────────────────────────
+
+  Date:    2026-02-17
+  Branch:  master
+  Hash:    d472c63
+  Message: chore(secrets): redact committed plaintext passwords and remove private keys
+  Push:    succeeded (user ran locally — agent terminal closed before push)
+  Notes:   Force-push of rewritten history. pre-scrub-backup branch preserved.
+           Collaborators notified. Credentials rotated.
+
+─── Session 2 — 2026-02-19 ───────────────────────────────────────────────────
+
+  Date:    2026-02-19
+  Branch:  chore/local-dev-env
+  Hash:    dfd2f7b
+  Message: chore: initial local dev environment setup files
+  Push:    succeeded
+
+  Date:    2026-02-19
+  Branch:  chore/local-dev-env
+  Hash:    27c68c9
+  Message: fix: resolve login servlet authentication failures
+  Push:    succeeded
+
+─── Session 3 — 2026-02-20 ───────────────────────────────────────────────────
+
+  Date:    2026-02-20
+  Branch:  chore/local-dev-env
+  Hash:    9c34b1d
+  Message: docs: complete local dev guide, diagrams, and project README
+  Push:    succeeded (git push -u origin chore/local-dev-env)
+  Notes:   PR #1 opened after push — https://github.com/rloisell/DSC/pull/1
+
+─── Session 4 — 2026-02-21 ───────────────────────────────────────────────────
+
+  Date:    2026-02-21
+  Branch:  chore/local-dev-env
+  Hash:    ef49e3d
+  Message: fix: address PR review issues and coding standards gaps
+  Push:    succeeded
+
+  Date:    2026-02-21
+  Branch:  chore/local-dev-env
+  Hash:    (pending)
+  Message: chore: make AI directory mandatory across project and template
+  Push:    pending
+
 Last commit message (redaction): "chore(secrets): redact committed plaintext passwords and remove private keys"
 Files committed: see AI/CHANGES.csv
 
