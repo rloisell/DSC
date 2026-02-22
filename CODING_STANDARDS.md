@@ -468,3 +468,64 @@ app.kubernetes.io/version: "<VERSION>"
 app.openshift.io/runtime: "dotnet"
 DataClass: "Medium"
 ```
+
+---
+
+## 10. `AI/nextSteps.md` — Document Maintenance Standard
+
+### 10.1 Purpose
+
+`AI/nextSteps.md` is the **authoritative todo list** for all AI-assisted work sessions. It must be kept current and structured for immediate scanning at the start of any session. It is not a history dump — `AI/WORKLOG.md` owns the narrative history.
+
+### 10.2 Required Document Structure
+
+The document must always follow this order:
+
+1. **Title + metadata** (author, AI tool, updated date)
+2. **MASTER TODO** — first content section; contains all tier tables and the session sequence plan
+3. **Todo Specifications** — one sub-section per pending todo item (where applicable)
+4. **Session History** — reverse chronological (newest entry at top); one sub-section per session
+
+> This ordering ensures that a new session begins by reading the current state, not by scrolling past completed history.
+
+### 10.3 MASTER TODO Tier Table Format
+
+Every tier table **must** include a `Status` column as the first column:
+
+| Status | # | Item | Effort | Notes |
+|--------|---|------|--------|-------|
+| ✅ | ~~**1**~~ | ~~Completed item description~~ **DONE YYYY-MM-DD** | Low | — |
+| ⬜ | **2** | Pending item description | Medium | Depends on #1 |
+
+**Rules:**
+- `Status` is always first column: `⬜` for pending, `✅` for done
+- Completed items: ~~strikethrough~~ on item text; append **DONE YYYY-MM-DD**
+- Do not remove completed rows — they provide quick context on what is done
+
+### 10.4 Session History Entry Format
+
+```markdown
+### YYYY-MM-DD — Session N: <objective>
+
+**Commits:**
+- `<hash>` description
+
+**Files changed:** list of files and what changed
+
+**Key decisions:**
+- Any architectural or product choice made this session
+```
+
+Prepend each new entry at the **top** of the Session History section.
+
+### 10.5 AI Guardrails for `AI/nextSteps.md`
+
+**ALWAYS:**
+- Mark the completed todo row `✅` and add ~~strikethrough~~ immediately after work is merged
+- Prepend a new session history entry at the top of Session History at session end
+- Keep MASTER TODO tables as the first content after the title block
+
+**NEVER:**
+- Delete old session history entries — they form the audit trail
+- Restructure the document ordering without explicit user direction
+- Allow the document to grow past ~600 lines — condense history to key facts; details live in `AI/WORKLOG.md`
