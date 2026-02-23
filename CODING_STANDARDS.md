@@ -377,12 +377,30 @@ through a proxy — Docker Hub and GHCR are not reliably reachable at runtime.
 
 Artifactory image path convention:
 ```
-artifacts.developer.gov.bc.ca/<project>/<image-name>:<git-sha>
+artifacts.developer.gov.bc.ca/<key>-docker-local/<image-name>:<git-sha>
 ```
 
 GitHub secrets needed in the app repo:
 - `ARTIFACTORY_USERNAME`
 - `ARTIFACTORY_PASSWORD`
+
+> **Artifactory project approval flow (new projects):** Artifactory projects on Emerald
+> are **not self-serve**. The full sequence before the build pipeline can push images:
+> 1. Apply an `ArtifactoryProject` CRD in `<license>-tools` — this registers the project
+>    in pending state (`approval_status: pending`)
+> 2. Post in `#devops-artifactory` on Rocket.Chat requesting approval (include license
+>    plate, project key, and team contact)
+> 3. Wait for Platform Services to approve
+>    (`oc describe artproj <name> -n <license>-tools | grep approval_status`
+>    → `nothing-to-approve`)
+> 4. In the Artifactory UI: navigate to the project → Repositories → Add Local → Docker
+>    → name `docker-local` (auto-prefixed to `<key>-docker-local`)
+> 5. In the Artifactory UI: Identity and Access → Members → add the OpenShift service
+>    account (`default-<license>-<sa-hash>`) as **Developer**
+>
+> ⚠️ The build pipeline logs in to Artifactory as its **first step** — pushing to
+> trigger `build-and-push.yml` before steps 4–5 are complete will fail immediately
+> at the login step, not at the build step.
 
 ### 9.4 Containerfile Conventions
 
