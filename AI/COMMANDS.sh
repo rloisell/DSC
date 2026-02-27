@@ -86,3 +86,24 @@
 git add docs/diagrams/README.md AI/nextSteps.md AI/WORKLOG.md AI/CHANGES.csv AI/COMMANDS.sh AI/COMMIT_INFO.txt
 git commit -m "docs: complete UML diagram suite and add next steps backlog"
 git push
+
+# ── SESSION 2026-02-23 — Login broken; environment debug ─────────────────────
+
+# Clean compile
+JAVA_HOME=$(/usr/libexec/java_home -v 1.8) ant -f build-dbva.xml clean compile
+
+# Sync classes and deploy
+rsync -a --delete classes/ WebContent/WEB-INF/classes/
+rsync -a --delete WebContent/ /opt/homebrew/opt/tomcat@9/libexec/webapps/DSC/
+
+# Inject real DB password into deployed runtime config (never commit this)
+sed -i '' 's|REDACTED_DO_NOT_COMMIT|Welcome1234|g' \
+  /opt/homebrew/opt/tomcat@9/libexec/webapps/DSC/WEB-INF/classes/ormmapping/DSC.cfg.xml
+
+# Restart Tomcat
+brew services restart tomcat@9
+
+# Seed full year of Calendar data (2026) via Python-generated INSERT IGNORE
+# python3 generated /tmp/seed_calendar_2026.sql
+# /opt/homebrew/opt/mysql@8.0/bin/mysql -u root --protocol=socket \
+#   --socket=/opt/homebrew/var/mysql8/mysql8.sock dsc < /tmp/seed_calendar_2026.sql

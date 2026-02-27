@@ -1,6 +1,36 @@
 # AI Worklog
 
-Date: 2026-02-17 / 2026-02-18
+### 2026-02-23 — Session: Login broken after environment restart
+
+**Objective**: Diagnose and fix "nothing happens on login" after dev environment restart.
+
+**Root causes found (3):**
+
+1. **Stale Hibernate connection** — MySQL's `wait_timeout` closed the pooled connection after ~14.5 hours of inactivity. Error: `CommunicationsException: last packet 52,223,693 ms ago`. Fixed by adding `autoReconnect=true` to JDBC URL in all three `DSC.cfg.xml` copies and `setenv.sh`.
+
+2. **`REDACTED_DO_NOT_COMMIT` password in deployed config** — `replace-secrets.sh` scrubs the DB password from workspace files. The `rsync`-based deploy copies the scrubbed file to Tomcat's webapps directory. Hibernate could not authenticate, silently caught the `PersistentException`, returned null user, and redirected back to `login.jsp`. Fixed by patching the deployed runtime copy with the real password after every rsync (`Welcome1234` for `dscdev@localhost:4306`).
+
+3. **Sparse `Calendar` table** — `Employee` constructor calls `CalendarDAO.loadCalendarByORMID(new Date())` to load today's Calendar row. The table only contained 6 entries (5 holidays/events + the day the seed was run). `session.load()` threw `ObjectNotFoundException` for today's date, which was caught silently, leaving `today = null`. `setRequiredHours()` then NPE'd on `today.getCalendar_CategorycalendarCategory()`. Fixed by populating all 365 days of 2026 as Workday (category 1) via `INSERT IGNORE`, and updating `ModernSeedData.java` to dynamically seed the full current year on every run.
+
+**Files changed:**
+- `src/ormmapping/DSC.cfg.xml` — added `autoReconnect=true` to JDBC URL
+- `WebContent/WEB-INF/src/ormmapping/DSC.cfg.xml` — same
+- `WebContent/WEB-INF/classes/ormmapping/DSC.cfg.xml` — same
+- `/opt/homebrew/opt/tomcat@9/libexec/bin/setenv.sh` — added `autoReconnect=true` (deployment artifact, not in git)
+- `src/mts/dsc/test/ModernSeedData.java` — replaced hardcoded 6-date Calendar seed with dynamic full-year loop
+- `docs/local-development/README.md` — added step 4 (password injection) to deploy workflow; corrected `build/classes/` → `classes/` in rsync step
+
+**Commands run:**
+- `brew services restart tomcat@9` (×3)
+- `ant -f build-dbva.xml compile`
+- `rsync`, `sed` on deployed Tomcat webapps config
+- MySQL: bulk `INSERT IGNORE` of 365 Calendar rows via Python-generated SQL
+
+**Commits:** none this session (deployment artifacts only; workspace changes ready to commit)
+
+---
+
+
 
 Summary of automated actions performed by the assistant in this repository:
 

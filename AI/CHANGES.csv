@@ -38,3 +38,12 @@ AI/WORKLOG.md,modified,Session 5 entry appended
 AI/CHANGES.csv,modified,Session 5 rows appended
 AI/COMMANDS.sh,modified,Session 5 commands appended
 AI/COMMIT_INFO.txt,modified,Session 5 commit appended
+src/ormmapping/DSC.cfg.xml,modified,added autoReconnect=true to JDBC URL
+WebContent/WEB-INF/src/ormmapping/DSC.cfg.xml,modified,added autoReconnect=true to JDBC URL
+WebContent/WEB-INF/classes/ormmapping/DSC.cfg.xml,modified,added autoReconnect=true to JDBC URL
+src/mts/dsc/test/ModernSeedData.java,modified,dynamic full-year Calendar seeding replaces 6 hardcoded dates
+docs/local-development/README.md,modified,added password injection step to deploy workflow; corrected classes/ path
+AI/WORKLOG.md,modified,2026-02-23 session entry prepended
+AI/CHANGES.csv,modified,2026-02-23 rows appended
+AI/COMMANDS.sh,modified,2026-02-23 commands appended
+src/mts/dsc/test/README.md,created,test data structure documentation

@@ -1,19 +1,16 @@
 # DSC — Daily Schedule Control
 
-**Ryan Loiselle** — Developer / Architect  
-**GitHub Copilot** — AI pair programmer / code generation  
+**Ryan Loiselle** — Developer / Architect   
 
 ---
 
 ## Overview
 
-DSC (Daily Schedule Control) is a legacy Java EE web application for employee timesheet and
-activity tracking. It is built on Servlet/JSP, Hibernate 3 ORM, and MySQL, deployed as an
-exploded WAR on Apache Tomcat.
+DSC (Daily Schedule Control) is a legacy Java EE web application for employee timesheet and activity tracking. It is built on Servlet/JSP, Hibernate 3 ORM, and MySQL, deployed as an exploded WAR on Apache Tomcat.
 
-This repository is used as a study and modernisation platform — the codebase represents a
-real-world legacy system with the goal of bringing it to a clean, documented, and
-deployable state.
+It was originally developed in 2009 while working in the Telecom industry (MTS Allstream). The code base as it exists in this repository is what was developed for work, but also for credit for a 3rd year Advanced Internet Programming course during my Applied Computer Science program at the University of Winnipeg. There was further development to code base within the company, which completed many of the incomplete features within this deployment. 
+
+This repository is used as a study and modernisation platform — the codebase represents a real-world legacy system with the goal of bringing it to a clean, documented, and deployable state.
 
 ---
 
