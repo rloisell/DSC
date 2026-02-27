@@ -234,3 +234,16 @@ across this project and the template repo.
 ### Outcomes / Notes
 - Full 12-diagram UML suite complete; codebase fully documented before modernisation
 - 33-task backlog ready; agent can pick up any task by number in a future session
+
+---
+
+## 2026-02-26 — Session N: Security Scan
+
+**Objective**: Trivy filesystem scan of the legacy Java codebase.
+
+### Findings
+- `trivy fs --scanners vuln,secret` detected 8 CVEs, all in `mysql-connector-java` JARs (5.1.7 in `lib/`, 5.1.45 in `WebContent/WEB-INF/lib/`)
+- CVE-2017-3523 (HIGH), CVE-2018-3258 (HIGH), CVE-2023-22102 (HIGH), CVE-2015-2575 (MEDIUM), CVE-2017-3586 (MEDIUM), CVE-2019-2692 (MEDIUM), CVE-2022-21363 (MEDIUM), CVE-2017-3589 (LOW)
+- No secrets detected ✅
+- These CVEs are expected for a 2009-era codebase; addressed by the DSC-modernization project
+- No code changes made to this repo in this session

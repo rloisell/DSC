@@ -107,3 +107,6 @@ brew services restart tomcat@9
 # python3 generated /tmp/seed_calendar_2026.sql
 # /opt/homebrew/opt/mysql@8.0/bin/mysql -u root --protocol=socket \
 #   --socket=/opt/homebrew/var/mysql8/mysql8.sock dsc < /tmp/seed_calendar_2026.sql
+
+# Session N — Security scanning 2026-02-26
+trivy fs --scanners vuln,secret ~/Documents/developer/DSC
