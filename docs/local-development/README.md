@@ -180,15 +180,26 @@ JAVA_HOME=$(/usr/libexec/java_home -v 1.8) \
 
 # 2. Sync classes into WebContent
 mkdir -p WebContent/WEB-INF/classes
-rsync -a --delete build/classes/ WebContent/WEB-INF/classes/
+rsync -a --delete classes/ WebContent/WEB-INF/classes/
 
 # 3. Deploy to Tomcat
 mkdir -p /opt/homebrew/opt/tomcat@9/libexec/webapps/DSC
 rsync -a --delete WebContent/ /opt/homebrew/opt/tomcat@9/libexec/webapps/DSC/
 
-# 4. Restart Tomcat
+# 4. Inject the real DB password into the deployed runtime config.
+#    replace-secrets.sh scrubs credentials from the workspace copy — the deployed
+#    copy must be patched after every rsync. Never commit the result.
+sed -i '' 's|REDACTED_DO_NOT_COMMIT|Welcome1234|g' \
+  /opt/homebrew/opt/tomcat@9/libexec/webapps/DSC/WEB-INF/classes/ormmapping/DSC.cfg.xml
+
+# 5. Restart Tomcat
 brew services restart tomcat@9
 ```
+
+> **Why the password step?** `scripts/replace-secrets.sh` scrubs plaintext credentials
+> from all workspace config files before commit. The `rsync` copies the scrubbed file
+> to Tomcat's webapps directory. Without step 4, Hibernate cannot open a DB connection
+> and every login silently fails (returns to `login.jsp` with no error).
 
 ### Recompile a single servlet (faster for iterating)
 

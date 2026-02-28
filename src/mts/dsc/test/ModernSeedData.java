@@ -199,12 +199,27 @@ public class ModernSeedData {
 			Calendar_Category eventCat = ensureCalendarCategory("Company Event", "Company event");
 			Calendar_Category training = ensureCalendarCategory("Training Day", "Training events");
 
-			ensureCalendar(date(2026, 1, 1), holiday);
-			ensureCalendar(date(2026, 3, 15), eventCat);
-			ensureCalendar(date(2026, 7, 1), holiday);
-			ensureCalendar(date(2026, 12, 25), holiday);
-			ensureCalendar(date(2026, 12, 26), holiday);
-			ensureCalendar(today, workday);
+			// determine the current year dynamically so re-running the seed never breaks login
+			Calendar calYear = Calendar.getInstance();
+			calYear.setTime(today);
+			int currentYear = calYear.get(Calendar.YEAR);
+
+			// seed holidays/events first — ensureCalendar skips existing rows,
+			// so inserting these before the workday loop preserves their category
+			ensureCalendar(date(currentYear, 1, 1), holiday);    // New Year's Day
+			ensureCalendar(date(currentYear, 7, 1), holiday);    // Canada Day
+			ensureCalendar(date(currentYear, 12, 25), holiday);  // Christmas Day
+			ensureCalendar(date(currentYear, 12, 26), holiday);  // Boxing Day
+			ensureCalendar(date(currentYear, 3, 15), eventCat);  // Company Event
+
+			// fill every remaining day of the year as a workday
+			Calendar cursor = Calendar.getInstance();
+			cursor.setTime(date(currentYear, 1, 1));
+			Date yearEnd = date(currentYear, 12, 31);
+			while (!cursor.getTime().after(yearEnd)) {
+				ensureCalendar(cursor.getTime(), workday); // no-op if holiday/event already inserted
+				cursor.add(Calendar.DAY_OF_MONTH, 1);
+			}
 
 			Category devCategory = loadCategoryByName("Development");
 			Category supportCategory = loadCategoryByName("Support");
