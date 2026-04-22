@@ -110,3 +110,26 @@ brew services restart tomcat@9
 
 # Session N — Security scanning 2026-02-26
 trivy fs --scanners vuln,secret ~/Documents/developer/DSC
+
+# ── SESSION — 2026-03-03 — Local dev stack health check ──────────────────────
+
+# Check service status
+brew services list | grep -E "tomcat|mysql"
+launchctl list | grep mysql8
+
+# Verify MySQL connectivity
+/opt/homebrew/opt/mysql@8.0/bin/mysql \
+  -u dscdev -p \
+  --protocol=TCP --host=127.0.0.1 --port=4306 \
+  dsc -e "SELECT COUNT(*) FROM Calendar; SELECT COUNT(*) FROM User;"
+
+# Restart Tomcat (to flush stale Hibernate connection pool)
+brew services restart tomcat@9
+
+# Smoke tests
+curl -s -o /dev/null -w "HTTP %{http_code}" http://localhost:8080/DSC/
+curl -s -o /dev/null -w "HTTP %{http_code}" http://localhost:8080/DSC/jsp/login.jsp
+curl -s -o /dev/null -w "HTTP %{http_code} -> %{redirect_url}" -X POST \
+  -d "username=rloisel1&password=test-password" \
+  http://localhost:8080/DSC/LoginServlet
+# Result: 302 -> ActivityServlet (PASS)

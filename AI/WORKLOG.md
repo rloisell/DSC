@@ -1,5 +1,31 @@
 # AI Worklog
 
+### 2026-03-03 — Session: Local dev stack health check & restart
+
+**Objective**: Verify all local dev services are running and the full login flow works.
+
+**Steps performed:**
+
+1. Checked service status — Tomcat 9 was running, MySQL 8 LaunchAgent active (PID 65854).
+2. Verified MySQL connectivity on port 4306 — `dsc` database healthy (365 Calendar rows, 4 users).
+3. Confirmed deployed `DSC.cfg.xml` had correct password (`Welcome1234`) and `autoReconnect=true`.
+4. Ran smoke test — `POST /LoginServlet` returned HTTP 500 (`JDBCConnectionException: could not initialize a collection`) — Hibernate connection pool was holding stale connections from prior session.
+5. Restarted Tomcat (`brew services restart tomcat@9`) to flush connection pool.
+6. Re-ran full smoke suite — all three endpoints passed:
+   - `GET /DSC/` → HTTP 200
+   - `GET /DSC/jsp/login.jsp` → HTTP 200
+   - `POST /DSC/LoginServlet` (rloisel1 / test-password) → HTTP 302 → `ActivityServlet`
+
+**Root cause**: Stale Hibernate connections not being automatically recycled after extended idle period, even with `autoReconnect=true`. Tomcat restart is the reliable fix at session start.
+
+**Files changed:** none (deployment artifact already had correct config)
+
+**Commands run:** see `AI/COMMANDS.sh`
+
+**Commits:** none this session
+
+---
+
 ### 2026-02-23 — Session: Login broken after environment restart
 
 **Objective**: Diagnose and fix "nothing happens on login" after dev environment restart.

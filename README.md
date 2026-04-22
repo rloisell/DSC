@@ -27,6 +27,22 @@ This repository is used as a study and modernisation platform — the codebase r
 
 ---
 
+## Local Dev — Quick Start
+
+This project is managed by `~/dev-tools/dev-ctl` alongside all other local projects.
+
+```bash
+dev-ctl start  dsc      # start MySQL 8 (if not running) + Tomcat 9
+dev-ctl stop   dsc      # stop Tomcat 9 (MySQL left running)
+dev-ctl status          # health table for all projects
+dev-ctl install-monitor # cron every 5 min + macOS alert if down
+```
+
+See `.dev-env` in this repo for service declarations, and
+`rl-agents-n-skills/local-dev/SKILL.md` for the full reference.
+
+---
+
 ## Documentation
 
 | Document | Purpose |
